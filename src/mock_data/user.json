@@ -1,0 +1,31 @@
+{
+  "expenses": [
+    {
+      "category": "food",
+      "amount": 38,
+      "currency": "RON",
+      "item": "pizza Grande",
+      "qty": 1,
+      "date": "Thu 29th March 2018",
+      "time": "20:01"
+    },
+    {
+      "category": "transport",
+      "amount": 12,
+      "currency": "RON",
+      "qty": 1,
+      "item": "Uber - acasa -> lucru",
+      "date": "Wed 28th March 2018",
+      "time": "09:05"
+    },
+    {
+      "category": "beer",
+      "amount": 16,
+      "currency": "RON",
+      "qty": 4,
+      "item": "Carlsberg 0.5",
+      "date": "Wed 28th March 2018",
+      "time": "18:15"
+    }
+  ]
+}
