@@ -4,7 +4,7 @@ import {
     Text,
     View
 } from 'react-native'
-import { Actions } from 'react-native-router-flux'
+// import { Actions } from 'react-native-router-flux'
 import Header from '../common/Header'
 import Button from '../common/Button'
 import ExpensesContainer from './ExpensesContainer'
@@ -14,11 +14,12 @@ export default class RecordsContainer extends Component {
 
     onButtonPress = () => {
         console.log('Pressed')
-        Actions.home()
+        // Actions.home()
+        this.props.navigation.goBack()
     }
 
     navigateTo = () => {
-        Actions.home()
+        // Actions.home()
     }
 
     render() {

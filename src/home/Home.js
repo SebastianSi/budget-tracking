@@ -4,21 +4,22 @@ import {
     Text,
     View
 } from 'react-native'
-import { Actions } from 'react-native-router-flux'
+// import { Actions } from 'react-native-router-flux'
 import Header from '../common/Header'
 import Button from '../common/Button'
 import ModalExample from '../common/Modal'
+import { StackNavigator } from 'react-navigation'
 // import { Overlay } from 'react-native-elements'
 
 export default class Home extends Component {
 
     onButtonPress = () => {
         console.log('Pressed')
-        Actions.recordsContainer()
+        this.props.navigation.navigate('RecordsContainer')
     }
 
     navigateTo = () => {
-        Actions.recordsContainer()
+        // Actions.recordsContainer()
     }
 
     render() {
