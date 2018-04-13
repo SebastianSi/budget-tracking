@@ -7,13 +7,13 @@ const Header = (props) => {
 
     return (
         <View style={viewStyle}>
-            <Icon
-                name = 'three-bars'
-                size = {28}
-                color = 'white'
-                style = {{paddingLeft : 20}}
-                onPress = {props.navigateTo}
-            />
+            {/*<Icon*/}
+                {/*name = 'three-bars'*/}
+                {/*size = {28}*/}
+                {/*color = 'white'*/}
+                {/*style = {{paddingLeft : 20}}*/}
+                {/*onPress = {props.navigateTo}*/}
+            {/*/>*/}
             <Text style={textStyle}>{props.headerText}</Text>
         </View>
     )
@@ -22,8 +22,8 @@ const Header = (props) => {
 const styles = {
     viewStyle: {
         backgroundColor: '#000',
-        // justifyContent: 'center',
-        // alignItems: 'center',
+        justifyContent: 'center',
+        alignItems: 'center',
         height: 60,
         // paddingTop: 15,
         shadowColor: '#fff',

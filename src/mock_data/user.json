@@ -26,6 +26,24 @@
       "item": "Carlsberg 0.5",
       "date": "Wed 28th March 2018",
       "time": "18:15"
+    },
+    {
+      "category": "food",
+      "amount": 21,
+      "currency": "RON",
+      "qty": 1,
+      "item": "snitel + linte La Casa",
+      "date": "Wed 11th April 2018",
+      "time": "18:15"
+    },
+    {
+      "category": "transport",
+      "amount": 60,
+      "currency": "RON",
+      "qty": 1,
+      "item": "Abonament",
+      "date": "Thu 12th April 2018",
+      "time": "19:30"
     }
   ]
 }
