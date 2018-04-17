@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Modal, Text, TouchableHighlight, View, TextInput} from 'react-native';
+import { Button } from 'native-base'
 
 export default class ModalWithForm extends Component {
 
@@ -28,7 +29,7 @@ export default class ModalWithForm extends Component {
         }
 
         let formContainerStyle = {
-            marginTop: 242,
+            marginTop: 232,
             marginLeft: 30,
             marginBottom: 30,
             height: 260,
@@ -61,10 +62,10 @@ export default class ModalWithForm extends Component {
                                         onPress={() => {
                                             this.props.closeEditModal()
                                         }}>
-                                        <Text style={{fontSize: 25}}>x</Text>
+                                        <Text style={{fontSize: 20}}>x</Text>
                                     </TouchableHighlight>
                                     <View style={{flexDirection:'row', flexWrap:'wrap', paddingBottom: 10}}>
-                                        <Text style={{alignSelf: 'flex-start', paddingRight:10}}>Qty</Text>
+                                        <Text style={{alignSelf: 'flex-start', paddingRight:44}}>Qty</Text>
                                         <TextInput
                                             style={{alignSelf: 'center', height: 30, width: 150, borderColor: 'grey', borderWidth: 0, backgroundColor: '#fff'}}
                                             onChangeText={(qty) => this.setState({qty})}
@@ -72,7 +73,7 @@ export default class ModalWithForm extends Component {
                                         />
                                     </View>
                                     <View style={{flexDirection:'row', flexWrap:'wrap', paddingBottom: 10}}>
-                                        <Text style={{alignSelf: 'flex-start', paddingRight:10}}>Item</Text>
+                                        <Text style={{alignSelf: 'flex-start', paddingRight:40}}>Item</Text>
                                         <TextInput
                                             style={{alignSelf: 'center', height: 30, width: 150, borderColor: 'grey', borderWidth: 0, backgroundColor: '#fff'}}
                                             onChangeText={(item) => this.setState({item})}
@@ -80,7 +81,7 @@ export default class ModalWithForm extends Component {
                                         />
                                     </View>
                                     <View style={{flexDirection:'row', flexWrap:'wrap', paddingBottom: 10}}>
-                                        <Text style={{alignSelf: 'flex-start', paddingRight:10}}>Amount</Text>
+                                        <Text style={{alignSelf: 'flex-start', paddingRight:19}}>Amount</Text>
                                         <TextInput
                                             style={{alignSelf: 'center', height: 30, width: 150, borderColor: 'grey', borderWidth: 0, backgroundColor: '#fff'}}
                                             onChangeText={(amount) => this.setState({amount})}
@@ -97,13 +98,14 @@ export default class ModalWithForm extends Component {
                                     </View>
                                 </View>
                             }
-                            <TouchableHighlight style={submitButtonStyle}
-                                                onPress={() => {
-                                                    this.props.editExpense(this.state)
-                                                    this.props.closeEditModal()
-                                                }}>
-                                <Text>Submit</Text>
-                            </TouchableHighlight>
+                            <Button
+                                onPress={() => {
+                                    this.props.editExpense(this.state)
+                                    this.props.closeEditModal()
+                                }}
+                                light style={{alignSelf: 'flex-end', paddingLeft: 5, paddingRight: 5, marginRight:12, marginTop: 20, marginBottom: 10}}>
+                                <Text>Submit </Text>
+                            </Button>
                         </View>
                     </View>
                 </Modal>

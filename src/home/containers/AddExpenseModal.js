@@ -54,10 +54,10 @@ export default class AddExpenseModal extends Component {
                                         //clear state - will also reset modalVisible to false
                                         this.setState(this.initialState)
                                     }}>
-                                    <Text style={{fontSize: 25}}>x</Text>
+                                    <Text style={{fontSize: 20}}>x</Text>
                                 </TouchableHighlight>
                                 <View style={{flexDirection:'row', flexWrap:'wrap', paddingBottom: 20}}>
-                                    <Text style={{alignSelf: 'flex-start', paddingRight:10}}>Qty</Text>
+                                    <Text style={{alignSelf: 'flex-start', paddingRight:44, paddingLeft: 10}}>Qty</Text>
                                     <TextInput
                                         style={{alignSelf: 'center', height: 30, width: 150, borderColor: 'grey', borderWidth: 0, backgroundColor: '#fff'}}
                                         onChangeText={(qtyVal) => this.setState({qtyVal})}
@@ -65,7 +65,7 @@ export default class AddExpenseModal extends Component {
                                     />
                                 </View>
                                 <View style={{flexDirection:'row', flexWrap:'wrap', paddingBottom: 20}}>
-                                    <Text style={{alignSelf: 'flex-start', paddingRight:10}}>Item</Text>
+                                    <Text style={{alignSelf: 'flex-start', paddingRight:40, paddingLeft: 10}}>Item</Text>
                                     <TextInput
                                         style={{alignSelf: 'center', height: 30, width: 150, borderColor: 'grey', borderWidth: 0, backgroundColor: '#fff'}}
                                         onChangeText={(itemText) => this.setState({itemText})}
@@ -73,7 +73,7 @@ export default class AddExpenseModal extends Component {
                                     />
                                 </View>
                                 <View style={{flexDirection:'row', flexWrap:'wrap', paddingBottom: 20}}>
-                                    <Text style={{alignSelf: 'flex-start', paddingRight:10}}>Amount</Text>
+                                    <Text style={{alignSelf: 'flex-start', paddingRight:19, paddingLeft: 10}}>Amount</Text>
                                     <TextInput
                                         style={{alignSelf: 'center', height: 30, width: 150, borderColor: 'grey', borderWidth: 0, backgroundColor: '#fff'}}
                                         onChangeText={(amountText) => this.setState({amountText})}
@@ -81,7 +81,7 @@ export default class AddExpenseModal extends Component {
                                     />
                                 </View>
                                 <View style={{flexDirection:'row', flexWrap:'wrap', paddingBottom: 20}}>
-                                    <Text style={{alignSelf: 'flex-start', paddingRight:10}}>Category</Text>
+                                    <Text style={{alignSelf: 'flex-start', paddingRight:10, paddingLeft: 10}}>Category</Text>
                                     <TextInput
                                         style={{alignSelf: 'center', height: 30, width: 150, borderColor: 'grey', borderWidth: 0, backgroundColor: '#fff'}}
                                         onChangeText={(categoryText) => this.setState({categoryText})}

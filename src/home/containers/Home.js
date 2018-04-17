@@ -29,10 +29,6 @@ export default class Home extends Component {
 
     addExpense = (expense) => {
         restCalls.addExpense(expense)
-        //Note: while the below line is usually an anti-patern, in this case we want to update
-        //the child modal, and don't need aditional state updates. We could also do a dummy setState(),
-        //or add logic to the promise returned by addExpense via .then()
-        this.forceUpdate()
     }
 
     render() {
