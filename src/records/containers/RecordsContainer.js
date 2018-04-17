@@ -8,6 +8,13 @@ import restCalls from '../../utils/restCalls'
 
 export default class RecordsContainer extends Component {
 
+    constructor(props) {
+        super(props)
+        this.state = {
+            expenses: []
+        }
+    }
+
     static navigationOptions = {
         title: 'BudgetTracker',
         headerStyle: { backgroundColor: '#000' , paddingTop: 15},
@@ -16,41 +23,46 @@ export default class RecordsContainer extends Component {
         drawerLabel: 'Home'
     }
 
-    constructor(props) {
-        super(props)
-        this.state = {
-            expenses: []
-        }
-    }
-
-
-
     componentDidMount() {
-        this.setState({expenses: restCalls.getExpenses()})
+        restCalls.getExpenses().then(expenses => {
+            this.setState({
+                expenses
+            })
+        })
     }
 
-    onButtonPress = () => {
-        console.log('Pressed')
-        this.props.navigation.goBack()
+    onExpenseEdit = (newExpense) => {
+        //Note: after removing the expense, we want to update the state so the user
+        //doesn't need to refresh the page
+        restCalls.editExpense(newExpense).then(() => {
+            restCalls.getExpenses().then(expenses => {
+                this.setState({
+                    expenses
+                })
+            })
+        })
     }
-
-    navigateTo = () => {
-        // Actions.home()
+    //
+    onExpenseRemove = (expenseId) => {
+        //Note: after removing the expense, we want to update the state so the user
+        //doesn't need to refresh the page
+        restCalls.removeExpenseById(expenseId).then(() => {
+            restCalls.getExpenses().then(expenses => {
+                this.setState({
+                    expenses
+                })
+            })
+        })
     }
 
     render() {
         return(
             <View style={styles.container}>
-                {/*<Header headerText={'Budget Tracking'}*/}
-                {/*navigateTo = {this.navigateTo}/>*/}
-                {/*<View style={styles.container}>*/}
-                    {/*<Button onPress={this.onButtonPress}>*/}
-                        {/*Go to Home*/}
-                    {/*</Button>*/}
                     <ExpensesContainer
-                    userExpenses = {this.state.expenses}>
+                    userExpenses = {this.state.expenses}
+                        editExpense = {this.onExpenseEdit}
+                        removeExpense = {this.onExpenseRemove}>
                     </ExpensesContainer>
-                {/*</View>*/}
             </View>
         )
     }
@@ -59,7 +71,6 @@ export default class RecordsContainer extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        // alignSelf: 'flex-start',
         flexDirection: 'column',
         backgroundColor: '#EEEEEE'
     }})

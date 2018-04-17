@@ -1,20 +1,29 @@
 import React, {Component} from 'react'
-import {Modal, Text, TouchableHighlight, View, TextInput, Picker} from 'react-native'
-// import FloatLabelTextInput from 'react-native-floating-label-text-input'
-// import InlineLabelExample from './InlineLabelExample'
+import {Modal, Text, TouchableHighlight, View, TextInput} from 'react-native'
 import { Button } from 'native-base'
-import restCalls from '../utils/restCalls'
+import restCalls from '../../utils/restCalls'
 
-export default class ModalExample extends Component {
-    state = {
-        modalVisible: false,
-        itemText: '',
-        qtyVal: '1',
-        amountText: '',
-        categoryText: ''
+
+export default class AddExpenseModal extends Component {
+
+    constructor(props) {
+        super(props)
+        this.state = {
+            modalVisible: false,
+            itemText: '',
+            qtyVal: '1',
+            amountText: '',
+            categoryText: ''
+        }
+
+        this.initialState = this.state
     }
 
-    setModalVisible(visible) {
+    addExpense = (expense) => {
+        restCalls.addExpense(expense)
+    }
+
+    setModalVisible = (visible)=> {
         this.setState({modalVisible: visible})
     }
 
@@ -42,7 +51,8 @@ export default class ModalExample extends Component {
                                 <TouchableHighlight
                                     style={{alignSelf: 'flex-end', paddingRight:12, paddingTop: 10, paddingBottom: 10, paddingLeft: 10}}
                                     onPress={() => {
-                                        this.setModalVisible(!this.state.modalVisible)
+                                        //clear state - will also reset modalVisible to false
+                                        this.setState(this.initialState)
                                     }}>
                                     <Text style={{fontSize: 25}}>x</Text>
                                 </TouchableHighlight>
@@ -53,13 +63,6 @@ export default class ModalExample extends Component {
                                         onChangeText={(qtyVal) => this.setState({qtyVal})}
                                         value={this.state.qtyVal}
                                     />
-                                    {/*<Picker*/}
-                                        {/*selectedValue={this.state.qtyVal}*/}
-                                        {/*style={{ height: 15, width: 150 }}*/}
-                                        {/*onValueChange={(qtyVal, itemIndex) => this.setState({qtyVal: qtyVal})}>*/}
-                                        {/*<Picker.Item label="1" value="1" />*/}
-                                        {/*<Picker.Item label="2" value="2" />*/}
-                                    {/*</Picker>*/}
                                 </View>
                                 <View style={{flexDirection:'row', flexWrap:'wrap', paddingBottom: 20}}>
                                     <Text style={{alignSelf: 'flex-start', paddingRight:10}}>Item</Text>
@@ -85,9 +88,6 @@ export default class ModalExample extends Component {
                                         value={this.state.categoryText}
                                     />
                                 </View>
-                                {/*<TouchableHighlight onPress={() => {*/}
-                                    {/*this.setModalVisible(!this.state.modalVisible)*/}
-                                {/*}}>*/}
                                     <Button
                                         onPress={() => {
                                             let expense = {
@@ -97,17 +97,15 @@ export default class ModalExample extends Component {
                                                 item: this.state.itemText,
                                                 qty: this.state.qtyVal
                                             }
-                                            restCalls.addExpense(expense)
-                                            this.setModalVisible(false)
+                                            this.addExpense(expense)
+                                            //clear state - will also reset modalVisible to false
+                                            this.setState(this.initialState)
                                         }}
                                         light style={{alignSelf: 'flex-end', paddingLeft: 5, paddingRight: 5, marginRight:12, marginBottom: 10}}>
                                         <Text>Submit </Text>
                                     </Button>
-                                {/*</TouchableHighlight>*/}
                             </View>
                         </View>
-                    {/*<InlineLabelExample>*/}
-                    {/*</InlineLabelExample>*/}
                 </Modal>
 
                 <TouchableHighlight
