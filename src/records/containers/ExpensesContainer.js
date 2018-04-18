@@ -4,6 +4,7 @@ import {
 } from 'react-native'
 import ExpenseItem from '../components/ExpenseItem'
 import EditExpenseModal from './EditExpenseModal'
+import Constants from '../../AppConstants'
 
 export default class ExpensesContainer extends Component {
 
@@ -29,9 +30,9 @@ export default class ExpensesContainer extends Component {
     }
 
     handleExpensePressed = (expense, action) => {
-        if (action === 'EDIT') {
+        if (action === Constants.EDIT_EXPENSE) {
             this.openEditExpenseModal(expense)
-        } else if (action === 'REMOVE') {
+        } else if (action === Constants.REMOVE_EXPENSE) {
             this.removeExpense(expense.id)
         }
     }

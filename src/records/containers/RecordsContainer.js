@@ -24,33 +24,23 @@ export default class RecordsContainer extends Component {
     }
 
     componentDidMount() {
-        restCalls.getExpenses().then(expenses => {
-            this.setState({
-                expenses
-            })
-        })
+        this.updateExpensesState()
     }
 
     onExpenseEdit = (newExpense) => {
-        //Note: after removing the expense, we want to update the state so the user
-        //doesn't need to refresh the page
-        restCalls.editExpense(newExpense).then(() => {
-            restCalls.getExpenses().then(expenses => {
-                this.setState({
-                    expenses
-                })
-            })
-        })
+        restCalls.editExpense(newExpense)
+            .then(this.updateExpensesState)
     }
-    //
+
     onExpenseRemove = (expenseId) => {
-        //Note: after removing the expense, we want to update the state so the user
-        //doesn't need to refresh the page
-        restCalls.removeExpenseById(expenseId).then(() => {
-            restCalls.getExpenses().then(expenses => {
-                this.setState({
-                    expenses
-                })
+        restCalls.removeExpenseById(expenseId)
+            .then(this.updateExpensesState)
+    }
+
+    updateExpensesState = () => {
+        restCalls.getExpenses().then(expenses => {
+            this.setState({
+                expenses
             })
         })
     }

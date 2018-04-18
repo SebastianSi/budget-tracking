@@ -20,16 +20,11 @@ const restCalls =  {
         console.log('got expense with id: ', expenseId)
     },
     addExpense: async function (expense) {
-        //get current stored expenses array
         let storedExpenses = await this.getExpenses()
-
-        //decorate the expense received from UI
         let storedExpense = decorateExpenseFromForm(expense)
 
-        //push the decorated expense to the stored expenses
         storedExpenses.push(storedExpense)
 
-        //store the new expenses array
         try {
             await AsyncStorage.setItem('expenses', JSON.stringify(storedExpenses))
             return true
@@ -41,7 +36,6 @@ const restCalls =  {
         let storedExpenses = await this.getExpenses()
         let newExpenses = storedExpenses.filter((expense) => expenseId !== expense.id)
 
-        //store the new expenses array
         try {
             await AsyncStorage.setItem('expenses', JSON.stringify(newExpenses))
             console.log('Removed expense with id: :  ', expenseId)
@@ -60,7 +54,6 @@ const restCalls =  {
         let index = storedExpenses.findIndex((expense) => newExpense.id === expense.id)
         storedExpenses[index] = newExpense
 
-        //store the new expenses array
         try {
             await AsyncStorage.setItem('expenses', JSON.stringify(storedExpenses))
             console.log('edited expense with id: :  ', newExpense.id)

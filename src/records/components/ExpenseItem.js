@@ -1,6 +1,7 @@
 import React from 'react'
 import {Text, TouchableOpacity} from 'react-native'
 import Button from '../../common/Button'
+import Constants from '../../AppConstants'
 
 const ExpenseItem = (props) => {
     let { expense } = props
@@ -10,11 +11,11 @@ const ExpenseItem = (props) => {
                 <Text style={{fontWeight: '800'}}>   {expense.amount} {expense.currency}</Text>
             </Text>
 
-            <Button onPress={() => {props.onPress(expense, 'EDIT')}}
+            <Button onPress={() => {props.onPress(expense, Constants.EDIT_EXPENSE)}}
                     styles={styles.editButton}>
                 Edit
             </Button>
-            <Button onPress={() => {props.onPress(expense, 'REMOVE')}}
+            <Button onPress={() => {props.onPress(expense, Constants.REMOVE_EXPENSE)}}
                     styles={styles.removeButton}>
                 Remove
             </Button>
