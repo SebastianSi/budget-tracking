@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {
     Button,
     StyleSheet,
+    StatusBar,
     View,
 } from 'react-native'
 import AddExpenseModal from './AddExpenseModal'
@@ -35,8 +36,8 @@ export default class Home extends Component {
         return(
             <View style={{ flex: 1 }}>
                 <View style={styles.container}>
-                    <AddExpenseModal>
-                        addExpense={this.addExpense}
+                    <AddExpenseModal
+                        addExpense={this.addExpense}>
                     </AddExpenseModal>
                     <Button
                         onPress={this.onSeeRecordsButtonPress}

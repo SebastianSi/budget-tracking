@@ -71,7 +71,6 @@ export default class RecordsContainer extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        flexDirection: 'column',
         backgroundColor: '#EEEEEE'
     }})
 

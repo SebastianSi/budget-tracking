@@ -1,65 +1,65 @@
-import React, {Component} from 'react'
+import React from 'react'
 import {Text, TouchableOpacity} from 'react-native'
 import Button from '../../common/Button'
 
-//TODO: should change this to a stateless func component
-export default class ExpenseItem extends Component {
+const ExpenseItem = (props) => {
+    let { expense } = props
+    return (
+        <TouchableOpacity style={styles.expense}>
+            <Text style={styles.expenseText}>{expense.qty} {expense.item} ({expense.category})
+                <Text style={{fontWeight: '800'}}>   {expense.amount} {expense.currency}</Text>
+            </Text>
 
-    constructor(props) {
-        super(props)
-        this.state = {}
-    }
-
-    render() {
-        let { expense } = this.props
-        return (
-            <TouchableOpacity style={styles.expense}>
-                <Text style={styles.expenseText}>{expense.qty} - {expense.category} - {expense.item} - {expense.amount} - {expense.currency}</Text>
-                <Button onPress={() => {this.props.onPress(expense, 'EDIT')}}
-                        styles={styles.editButton}>
-                    Edit
-                </Button>
-                <Button onPress={() => {this.props.onPress(expense, 'REMOVE')}}
-                        styles={styles.removeButton}>
-                    Remove
-                </Button>
-            </TouchableOpacity>
-        )
-    }
+            <Button onPress={() => {props.onPress(expense, 'EDIT')}}
+                    styles={styles.editButton}>
+                Edit
+            </Button>
+            <Button onPress={() => {props.onPress(expense, 'REMOVE')}}
+                    styles={styles.removeButton}>
+                Remove
+            </Button>
+        </TouchableOpacity>
+    )
 }
+
 
 const styles = {
     expense: {
+        display: 'flex',
         flex: 1,
-        alignSelf: 'stretch',
         flexDirection: 'row',
-        paddingTop: 5,
-        paddingBottom: 5
+        borderBottomWidth: 1,
+        justifyContent: 'flex-end',
+        borderColor: '#ddd',
+        padding: 5,
+        height: 50
     },
     expenseText: {
         fontWeight: '700',
+        flexDirection: 'row',
+        justifyContent: 'flex-end',
         color: '#673AB7',
-        flex: 1,
-        alignSelf: 'stretch'
+        marginTop: 7,
+        flex: 1
     },
     editButton: {
         textStyle: {
             alignSelf: 'center',
             color: '#007aff',
-            fontSize: 10,
-            fontWeight: '600',
+            fontSize: 12,
+            fontWeight: '700',
             paddingTop: 5,
             paddingBottom: 5
         },
         buttonStyle: {
             flex: 1,
-            // alignSelf: 'stretch',
-            maxHeight: 25,
-            maxWidth: 45,
+            maxHeight: 28,
+            maxWidth: 55,
             backgroundColor: '#fff',
             borderRadius: 5,
             borderWidth: 1,
             borderColor: '#007aff',
+            marginTop: 3,
             marginLeft: 5,
             marginRight: 5
         }
@@ -68,23 +68,25 @@ const styles = {
         textStyle: {
             alignSelf: 'center',
             color: '#000',
-            fontSize: 10,
-            fontWeight: '600',
+            fontSize: 12,
+            fontWeight: '700',
             paddingTop: 5,
             paddingBottom: 5
         },
         buttonStyle: {
             flex: 1,
-            // alignSelf: 'stretch',
             maxHeight: 28,
             maxWidth: 55,
             backgroundColor: '#F44336',
             borderRadius: 5,
             borderWidth: 1,
             borderColor: '#007aff',
+            marginTop: 3,
             marginLeft: 5,
             marginRight: 5
         }
     }
 
 }
+
+export default ExpenseItem

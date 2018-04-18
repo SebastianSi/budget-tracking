@@ -3,7 +3,7 @@ import {
     ScrollView
 } from 'react-native'
 import ExpenseItem from '../components/ExpenseItem'
-import ModalWithForm from '../../common/ModalWithForm'
+import EditExpenseModal from './EditExpenseModal'
 
 export default class ExpensesContainer extends Component {
 
@@ -59,12 +59,12 @@ export default class ExpensesContainer extends Component {
                 {expenses}
                 {
                     this.state.editModalVisible &&
-                        <ModalWithForm
+                        <EditExpenseModal
                             expense={this.state.editedExpense}
                             editExpense={this.editExpense}
                             closeEditModal = {this.closeEditModal}
                         >
-                        </ModalWithForm>
+                        </EditExpenseModal>
                 }
 
             </ScrollView>
@@ -74,7 +74,6 @@ export default class ExpensesContainer extends Component {
 
 const styles = {
     container: {
-        flex: 1,
-        flexDirection: 'column'
+        flex: 1
     }
 }

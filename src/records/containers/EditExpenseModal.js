@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Modal, Text, TouchableHighlight, View, TextInput} from 'react-native';
 import { Button } from 'native-base'
 
-export default class ModalWithForm extends Component {
+export default class EditExpenseModal extends Component {
 
     constructor(props) {
         super(props)
@@ -20,7 +20,8 @@ export default class ModalWithForm extends Component {
 
     render() {
         let modalContainerStyle = {
-            marginTop: 82,
+            position: 'absolute',
+            marginTop: 154,
             marginLeft: 18,
             height: 320,
             width: 340,
@@ -29,29 +30,20 @@ export default class ModalWithForm extends Component {
         }
 
         let formContainerStyle = {
-            marginTop: 232,
+            marginTop: 230,
             marginLeft: 30,
             marginBottom: 30,
             height: 260,
             width: 310
         }
 
-        let submitButtonStyle = {
-            marginTop: 42,
-            marginLeft: 160,
-            marginRight: 30,
-            backgroundColor: 'green'
-        }
-
         return (
             <View style={modalContainerStyle}>
                 <Modal
-                    animationType="slide"
+                    animationType='slide'
                     transparent={true}
                     visible={this.props.modalVisible}
-                    onRequestClose={() => {
-                        alert('Modal has been closed.');
-                    }}>
+                    >
                     <View style={formContainerStyle}>
                         <View>
                             {

@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import {Modal, Text, TouchableHighlight, View, TextInput} from 'react-native'
 import { Button } from 'native-base'
-import restCalls from '../../utils/restCalls'
 
 
 export default class AddExpenseModal extends Component {
@@ -20,7 +19,7 @@ export default class AddExpenseModal extends Component {
     }
 
     addExpense = (expense) => {
-        restCalls.addExpense(expense)
+        this.props.addExpense(expense)
     }
 
     setModalVisible = (visible)=> {
