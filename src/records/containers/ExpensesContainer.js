@@ -45,7 +45,7 @@ export default class ExpensesContainer extends Component {
 
         let { userExpenses } = this.props
 
-        let expenses = userExpenses && userExpenses.length ? userExpenses.map((exp) => {
+        let expenses = userExpenses && userExpenses.map((exp) => {
             return (
                 <ExpenseItem
                     expense={exp}
@@ -53,7 +53,7 @@ export default class ExpensesContainer extends Component {
                     key={exp.id}
                 />
             )
-        }) : []
+        })
 
         return(
             <ScrollView style={styles.container}>

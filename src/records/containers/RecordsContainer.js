@@ -49,7 +49,7 @@ export default class RecordsContainer extends Component {
         return(
             <View style={styles.container}>
                     <ExpensesContainer
-                    userExpenses = {this.state.expenses}
+                        userExpenses = {this.state.expenses}
                         editExpense = {this.onExpenseEdit}
                         removeExpense = {this.onExpenseRemove}>
                     </ExpensesContainer>

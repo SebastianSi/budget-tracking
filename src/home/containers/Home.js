@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import {
     Button,
     StyleSheet,
-    StatusBar,
     View,
 } from 'react-native'
 import AddExpenseModal from './AddExpenseModal'

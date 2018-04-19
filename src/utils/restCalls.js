@@ -49,7 +49,7 @@ const restCalls =  {
         //Another alternative would be to removeExpenseById, and then re-add new expense with the same id
 
         let storedExpenses = await this.getExpenses()
-        // really sad I no longer need this goodie.. expenseToEdit = {...expenseToEdit, ...newExpense}
+        //expenseToEdit = {...expenseToEdit, ...newExpense}
 
         let index = storedExpenses.findIndex((expense) => newExpense.id === expense.id)
         storedExpenses[index] = newExpense
