@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {
     ScrollView
 } from 'react-native'
-import ExpenseItem from '../components/ExpenseItem'
+import { ExpenseItem } from '../components'
 import EditExpenseModal from './EditExpenseModal'
 import Constants from '../../AppConstants'
 
