@@ -8,8 +8,8 @@ const ExpenseItem = (props) => {
     return (
         <TouchableOpacity style={styles.expense}>
             <Text style={styles.expenseText}>{expense.qty} {expense.item} ({expense.category})
-                <Text style={{fontWeight: '800'}}>   {expense.amount} {expense.currency}</Text>
             </Text>
+            <Text style={{right: 128, position: 'absolute', fontWeight: '700'}}>   {expense.amount} {expense.currency}</Text>
 
             <Button onPress={() => {props.onPress(expense, Constants.EDIT_EXPENSE)}}
                     styles={styles.editButton}>
@@ -26,65 +26,53 @@ const ExpenseItem = (props) => {
 
 const styles = {
     expense: {
-        display: 'flex',
-        flex: 1,
         flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
         borderBottomWidth: 1,
-        justifyContent: 'flex-end',
         borderColor: '#ddd',
-        padding: 5,
         height: 50
     },
     expenseText: {
         fontWeight: '700',
-        flexDirection: 'row',
-        justifyContent: 'flex-end',
         color: '#673AB7',
-        marginTop: 7,
-        flex: 1
+        left: 9
     },
     editButton: {
         textStyle: {
-            alignSelf: 'center',
             color: '#007aff',
             fontSize: 12,
-            fontWeight: '700',
-            paddingTop: 5,
-            paddingBottom: 5
+            fontWeight: '700'
         },
         buttonStyle: {
-            flex: 1,
-            maxHeight: 28,
-            maxWidth: 55,
+            height: 28,
+            width: 50,
+            justifyContent: 'center',
+            alignItems: 'center',
             backgroundColor: '#fff',
             borderRadius: 5,
             borderWidth: 1,
             borderColor: '#007aff',
-            marginTop: 3,
-            marginLeft: 5,
-            marginRight: 5
+            right: 68,
+            position: 'absolute'
         }
     },
     removeButton: {
         textStyle: {
-            alignSelf: 'center',
             color: '#000',
             fontSize: 12,
-            fontWeight: '700',
-            paddingTop: 5,
-            paddingBottom: 5
+            fontWeight: '700'
         },
         buttonStyle: {
-            flex: 1,
-            maxHeight: 28,
-            maxWidth: 55,
+            height: 28,
+            width: 51,
+            justifyContent: 'center',
+            alignItems: 'center',
             backgroundColor: '#F44336',
             borderRadius: 5,
             borderWidth: 1,
             borderColor: '#007aff',
-            marginTop: 3,
-            marginLeft: 5,
-            marginRight: 5
+            marginRight: 9
         }
     }
 

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Modal, Text, TouchableHighlight, View, TextInput} from 'react-native';
 import { Button } from 'native-base'
+// import { KeyboardAvoidingView } from 'react-native'
 
 export default class EditExpenseModal extends Component {
 
