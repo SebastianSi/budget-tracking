@@ -1,17 +1,17 @@
 const Constants =  {
     EDIT_EXPENSE: 'EDIT',
     REMOVE_EXPENSE: 'REMOVE',
-    CATEGORIES: {
-        FOOD: 'Food',
-        CLOTHING: 'Clothing',
-        BOOZE: 'Booze',
-        TRANSPORT: 'Transport',
-        SAVINGS: 'Savings',
-        RENT: 'Rent',
-        UTILITIES: 'Utilities',
-        TRAVEL: 'Travel',
-        GYM: 'Gym'
-    }
+    CATEGORIES: [
+        'Food',
+        'Clothing',
+        'Booze',
+        'Transport',
+        'Savings',
+        'Rent',
+        'Utilities',
+        'Travel',
+        'Gym'
+    ]
 }
 
 export default Constants

@@ -1,4 +1,5 @@
 import utils from './utils'
+import Constants from '../AppConstants'
 import { AsyncStorage } from 'react-native'
 
 
@@ -60,9 +61,55 @@ const restCalls =  {
         } catch(err) {
             console.log('Error when saving array ', err)
         }
+    },
+    addCategory: async function (categoryName) {
+        let storedCategoteries = await this.getCategories()
 
+        storedCategoteries.push(categoryName)
+
+        try {
+            await AsyncStorage.setItem('categories', JSON.stringify(storedCategoteries))
+            return true
+        } catch(err) {
+            console.log('Error when saving array ', err)
+        }
+    },
+    removeCategory: async function (categoryName) {
+        let storedCategoteries = await this.getCategories()
+
+        let categories = storedCategoteries.filter((category) => category!== categoryName)
+
+        try {
+            await AsyncStorage.setItem('categories', JSON.stringify(categories))
+            return true
+        } catch(err) {
+            console.log('Error when saving array ', err)
+        }
+    },
+    getCategories: async function () {
+        try {
+            const categories = await AsyncStorage.getItem('categories');
+            if (categories !== null){
+                console.log('getCategories result: ', categories);
+                return JSON.parse(categories)
+            } else {
+                //Categories don't exist yet, let's set predefined ones
+                this.setInitialCategories().then(this.getCategories())
+            }
+        } catch (error) {
+            console.log('getCategories Error: ', error)
+        }
+    },
+    setInitialCategories: async function () {
+        let categories = Constants.CATEGORIES
+
+        try {
+            await AsyncStorage.setItem('categories', JSON.stringify(categories))
+            return true
+        } catch(err) {
+            console.log('Error when saving array ', err)
+        }
     }
-
 }
 
 function decorateExpenseFromForm(expense) {

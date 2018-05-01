@@ -12,6 +12,9 @@ export default class Home extends Component {
 
     constructor(props) {
         super(props)
+        this.state = {
+            isBlurred: false
+        }
     }
 
     static navigationOptions = {
@@ -23,19 +26,23 @@ export default class Home extends Component {
     }
 
     onSeeRecordsButtonPress = () => {
-        console.log('Pressed')
         this.props.navigation.navigate('RecordsContainer')
     }
 
     addExpense = (expense) => {
-        restCalls.addExpense(expense)
+        restCalls.addExpense(expense).then(this.forceUpdate())
+    }
+
+    blurBackground = (isBlurred) => {
+        this.setState({isBlurred})
     }
 
     render() {
         return(
             <View style={{ flex: 1 }}>
-                <View style={styles.container}>
+                <View style={this.state.isBlurred ? styles.container : styles.containerBlurred}>
                     <AddExpenseModal
+                        blurBackground={this.blurBackground}
                         addExpense={this.addExpense}>
                     </AddExpenseModal>
                     <Button
@@ -53,6 +60,12 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#EEEEEE'
+        backgroundColor: '#78909C'
+    },
+    containerBlurred: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#fff'
     }})
 

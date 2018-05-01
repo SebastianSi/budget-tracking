@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
 import {Modal, Text, TouchableHighlight, View, TextInput, Picker, Platform} from 'react-native'
 import { Button } from 'native-base'
-import Constants from '../../AppConstants'
 import FormInput from '../../common/FormInput'
+import restCalls from '../../utils/restCalls'
 
 
 export default class AddExpenseModal extends Component {
@@ -14,19 +14,42 @@ export default class AddExpenseModal extends Component {
             itemText: '',
             qtyVal: '1',
             amountText: '',
-            categoryText: Constants.CATEGORIES.FOOD,
-            addCateg: ''
+            categoryText: '',
+            addCateg: '',
+            categories: []
         }
 
         this.initialState = this.state
     }
 
+    componentDidMount() {
+        this.getCategories()
+    }
+
+    componentWillUpdate() {
+        this.getCategories()
+    }
+
+    getCategories = () => {
+        restCalls.getCategories().then(categories => {
+            this.setState({
+                categories
+            })
+        })
+    }
+
     addExpense = (expense) => {
+        this.addNewCategory(expense.category)
         this.props.addExpense(expense)
     }
 
     setModalVisible = (visible)=> {
         this.setState({modalVisible: visible})
+        this.props.blurBackground(true)
+    }
+
+    addNewCategory = (category) => {
+        restCalls.addCategory(category)
     }
 
     setCategory = (itemValue) => {
@@ -37,22 +60,36 @@ export default class AddExpenseModal extends Component {
     }
 
     render() {
-        let modalContainerStyle = {
-            marginTop: 140,
-            marginLeft: 8,
-            height: 420,
-            width: 360,
-            backgroundColor: '#455A64',
-            borderRadius: 20,
-            elevation: 10
+        let modalContainerStyle
+        if (Platform.OS === 'ios') {
+            modalContainerStyle = {
+                marginTop: 120,
+                marginLeft: 8,
+                height: 420,
+                width: 360,
+                backgroundColor: '#fff',
+                borderRadius: 20,
+                elevation: 10
+            }
+        } else {
+            modalContainerStyle = {
+                marginTop: 80,
+                marginLeft: 8,
+                height: 400,
+                width: 340,
+                backgroundColor: '#fff',
+                borderRadius: 20,
+                elevation: 10
+            }
         }
 
-        let { CATEGORIES } = Constants
+
+        let { categories } = this.state
         console.log(Platform.OS)
 
         let addCategoryPickerItem = <Picker.Item label={'Add New +'} value={'addCategory'}
                                          key={'addNew'} color='#43A047'/>
-        let pickerItems = Object.values(CATEGORIES).map((category) => {
+        let pickerItems = categories.map((category) => {
             return <Picker.Item label={category} value={category} key={category}/>
         })
 
@@ -72,6 +109,7 @@ export default class AddExpenseModal extends Component {
                             <TouchableHighlight
                                 style={{alignSelf: 'flex-end', paddingRight:12, paddingTop: 10, paddingBottom: 10, paddingLeft: 10}}
                                 onPress={() => {
+                                    this.props.blurBackground(false)
                                     //clear state - will also reset modalVisible to false
                                     this.setState(this.initialState)
                                 }}>
@@ -99,7 +137,7 @@ export default class AddExpenseModal extends Component {
                             <View style={{flexDirection:'row', flexWrap:'wrap', paddingBottom: 20, marginTop: 20}}>
                                 <Text style={{alignSelf: 'flex-start', paddingRight:10, paddingLeft: 10, paddingTop: 48}}>Category</Text>
                                 <Picker
-                                    itemStyle={{color: 'white'}}
+                                    itemStyle={{color: 'black'}}
                                     selectedValue={this.state.addCateg}
                                     style={{ top: -52, height: 40, width: 110, paddingBottom: 10 }}
                                     onValueChange={(itemValue, itemIndex) => this.setCategory(itemValue, itemIndex)}>
@@ -109,8 +147,8 @@ export default class AddExpenseModal extends Component {
                                     this.state.addCateg === 'addCategory' &&
                                     <TextInput
                                         style={{height: 30, width: 90, borderColor: 'grey',
-                                            borderWidth: 0, backgroundColor: '#fff', marginTop: 40,
-                                        marginLeft: 20}}
+                                            borderWidth: 0, backgroundColor: '#212121', marginTop: 40,
+                                        marginLeft: 20, color: '#fff', fontWeight: '800'}}
                                         onChangeText={(categoryText) => this.setState({categoryText})}
                                         value={this.state.categoryText}
                                     />
@@ -128,10 +166,11 @@ export default class AddExpenseModal extends Component {
                                         }
                                         this.addExpense(expense)
                                         //clear state - will also reset modalVisible to false
+                                        this.props.blurBackground(false)
                                         this.setState(this.initialState)
                                     }}
-                                    light style={{alignSelf: 'flex-end', paddingLeft: 5, marginTop: 50, paddingRight: 5, marginRight:12, marginBottom: 10}}>
-                                    <Text>Submit </Text>
+                                    primary1 style={{alignSelf: 'flex-end', paddingLeft: 9, marginTop: 45, paddingRight: 9, marginRight:12, marginBottom: 15}}>
+                                    <Text style={{color: '#fff', fontWeight: '800'}}>Submit </Text>
                                 </Button>
                         </View>
                     </View>
