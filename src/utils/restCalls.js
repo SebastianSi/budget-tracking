@@ -65,13 +65,16 @@ const restCalls =  {
     addCategory: async function (categoryName) {
         let storedCategoteries = await this.getCategories()
 
-        storedCategoteries.push(categoryName)
-
-        try {
-            await AsyncStorage.setItem('categories', JSON.stringify(storedCategoteries))
-            return true
-        } catch(err) {
-            console.log('Error when saving array ', err)
+        if (storedCategoteries.includes(categoryName)) {
+            storedCategoteries.push(categoryName)
+            try {
+                await AsyncStorage.setItem('categories', JSON.stringify(storedCategoteries))
+                return true
+            } catch(err) {
+                console.log('Error when saving array ', err)
+            }
+        } else {
+            console.info(`Warning: Category ${categoryName} already exists!`)
         }
     },
     removeCategory: async function (categoryName) {

@@ -26,16 +26,21 @@ export default class AddExpenseModal extends Component {
         this.getCategories()
     }
 
-    componentWillUpdate() {
+    componentWillReceiveProps() {
         this.getCategories()
     }
 
     getCategories = () => {
-        restCalls.getCategories().then(categories => {
+        this.props.getCategories(categories => {
             this.setState({
                 categories
             })
+            this.setInitialCategory(categories[0])
         })
+    }
+
+    setInitialCategory = (category) => {
+        this.setCategory(category)
     }
 
     addExpense = (expense) => {
@@ -49,7 +54,7 @@ export default class AddExpenseModal extends Component {
     }
 
     addNewCategory = (category) => {
-        restCalls.addCategory(category)
+        this.props.addNewCategory(category)
     }
 
     setCategory = (itemValue) => {
@@ -89,7 +94,7 @@ export default class AddExpenseModal extends Component {
 
         let addCategoryPickerItem = <Picker.Item label={'Add New +'} value={'addCategory'}
                                          key={'addNew'} color='#43A047'/>
-        let pickerItems = categories.map((category) => {
+        let pickerItems = categories && categories.map((category) => {
             return <Picker.Item label={category} value={category} key={category}/>
         })
 
@@ -138,7 +143,7 @@ export default class AddExpenseModal extends Component {
                                 <Text style={{alignSelf: 'flex-start', paddingRight:10, paddingLeft: 10, paddingTop: 48}}>Category</Text>
                                 <Picker
                                     itemStyle={{color: 'black'}}
-                                    selectedValue={this.state.addCateg}
+                                    selectedValue={this.state.addCateg || this.state.categoryText}
                                     style={{ top: -52, height: 40, width: 110, paddingBottom: 10 }}
                                     onValueChange={(itemValue, itemIndex) => this.setCategory(itemValue, itemIndex)}>
                                     {pickerItems}
