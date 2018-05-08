@@ -29,8 +29,20 @@ export default class Home extends Component {
         this.props.navigation.navigate('RecordsContainer')
     }
 
+    onSeeCategoriesButtonPress = () => {
+        this.props.navigation.navigate('CategoriesContainer')
+    }
+
+    getCategories = (callback) => {
+        restCalls.getCategories().then(callback)
+    }
+
     addExpense = (expense) => {
         restCalls.addExpense(expense).then(this.forceUpdate())
+    }
+
+    addNewCategory = (category) => {
+        restCalls.addCategory(category)
     }
 
     blurBackground = (isBlurred) => {
@@ -43,11 +55,18 @@ export default class Home extends Component {
                 <View style={this.state.isBlurred ? styles.container : styles.containerBlurred}>
                     <AddExpenseModal
                         blurBackground={this.blurBackground}
-                        addExpense={this.addExpense}>
+                        addExpense={this.addExpense}
+                        addNewCategory={this.addNewCategory}
+                        getCategories={this.getCategories}>
                     </AddExpenseModal>
                     <Button
                         onPress={this.onSeeRecordsButtonPress}
                         title='See Records!'>
+                    </Button>
+                    <Button
+                        onPress={this.onSeeCategoriesButtonPress}
+                        title='See Categories!'
+                        color='#3F51B5'>
                     </Button>
                 </View>
             </View>
