@@ -8,11 +8,11 @@ const CategoryItem = (props) => {
     return (
         <TouchableOpacity style={styles.category}>
             <Text style={styles.categoryText}>{category}</Text>
-            <Button onPress={() => {props.onPress(category, Constants.EDIT_EXPENSE)}}
+            <Button onPress={() => {props.onPress(category, Constants.EDIT_CATEGORY)}}
                     styles={styles.editButton}>
                 Edit
             </Button>
-            <Button onPress={() => {props.onPress(category, Constants.REMOVE_EXPENSE)}}
+            <Button onPress={() => {props.onPress(category, Constants.REMOVE_CATEGORY)}}
                     styles={styles.removeButton}>
                 Remove
             </Button>
