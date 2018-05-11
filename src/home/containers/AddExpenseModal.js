@@ -98,7 +98,7 @@ export default class AddExpenseModal extends Component {
             return <Picker.Item label={category} value={category} key={category}/>
         })
 
-        pickerItems.splice(1, 0, addCategoryPickerItem)
+        pickerItems && pickerItems.splice(1, 0, addCategoryPickerItem)
 
         return (
             <View>
