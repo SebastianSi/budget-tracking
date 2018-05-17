@@ -3,9 +3,11 @@ import {
     Button,
     StyleSheet,
     View,
+    Image
 } from 'react-native'
 import AddExpenseModal from './AddExpenseModal'
 import restCalls from '../../utils/restCalls'
+import Icon from '../../img/icons8-menu.png'
 
 
 export default class Home extends Component {
@@ -16,13 +18,27 @@ export default class Home extends Component {
             isBlurred: false
         }
     }
+    //
+    // static navigationOptions = {
+    //     title: 'BudgetTracker',
+    //     headerStyle: { backgroundColor: '#000' , paddingTop: 15},
+    //     headerTintColor: '#fff',
+    //     headerTitleStyle: { color: '#fff' },
+    //     drawerLabel: 'Home'
+    // }
 
     static navigationOptions = {
-        title: 'BudgetTracker',
-        headerStyle: { backgroundColor: '#000' , paddingTop: 15},
-        headerTintColor: '#fff',
-        headerTitleStyle: { color: '#fff' },
-        drawerLabel: 'Home'
+        drawerLabel: 'Home',
+        drawerIcon: () => (
+            <Image
+                source={Icon}
+                style={[{width: 24, height: 24}, {tintColor: 'green'}]}
+            />
+        ),
+    };
+
+    componentDidMount() {
+        // this.props.navigation.toggleDrawer();
     }
 
     onSeeRecordsButtonPress = () => {
@@ -85,6 +101,6 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#fff'
+        backgroundColor: 'grey'
     }})
 
