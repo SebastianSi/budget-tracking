@@ -5,6 +5,7 @@ import {
     View,
 } from 'react-native'
 import AddExpenseModal from './AddExpenseModal'
+import Balance from '../components/Balance'
 import restCalls from '../../utils/restCalls'
 
 
@@ -13,7 +14,8 @@ export default class Home extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            isBlurred: false
+            isBlurred: false,
+            currentBalance: null
         }
     }
 
@@ -23,6 +25,11 @@ export default class Home extends Component {
         headerTintColor: '#fff',
         headerTitleStyle: { color: '#fff' },
         drawerLabel: 'Home'
+    }
+
+    componentDidMount() {
+        this.setBalance(7000)
+        this.getCurrentBalance()
     }
 
     onSeeRecordsButtonPress = () => {
@@ -49,10 +56,21 @@ export default class Home extends Component {
         this.setState({isBlurred})
     }
 
+    getCurrentBalance = () => {
+        restCalls.getBalance().then((balance) => this.setState({currentBalance: balance}))
+    }
+
+    setBalance = (amount) => {
+        restCalls.setBalance(amount).then(() => this.getCurrentBalance())
+    }
+
     render() {
         return(
             <View style={{ flex: 1 }}>
                 <View style={this.state.isBlurred ? styles.container : styles.containerBlurred}>
+                    <Balance
+                        currentBalance={this.state.currentBalance}
+                    />
                     <AddExpenseModal
                         blurBackground={this.blurBackground}
                         addExpense={this.addExpense}

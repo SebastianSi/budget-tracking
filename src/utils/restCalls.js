@@ -65,7 +65,7 @@ const restCalls =  {
     addCategory: async function (categoryName) {
         let storedCategoteries = await this.getCategories()
 
-        if (storedCategoteries.includes(categoryName)) {
+        if (!storedCategoteries.includes(categoryName)) {
             storedCategoteries.push(categoryName)
             try {
                 await AsyncStorage.setItem('categories', JSON.stringify(storedCategoteries))
@@ -111,6 +111,27 @@ const restCalls =  {
             return true
         } catch(err) {
             console.log('Error when saving array ', err)
+        }
+    },
+    setBalance: async function (amount) {
+        try {
+            await AsyncStorage.setItem('balance', JSON.stringify(amount))
+            return true
+        } catch(err) {
+            console.log('Error when saving array ', err)
+        }
+    },
+    getBalance: async function () {
+        try {
+            const balance = await AsyncStorage.getItem('balance');
+            if (balance !== null){
+                console.log('getBalance result: ', balance);
+                return JSON.parse(balance)
+            } else {
+                return null
+            }
+        } catch (error) {
+            console.log('getBalance Error: ', error)
         }
     }
 }
