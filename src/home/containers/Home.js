@@ -6,6 +6,7 @@ import {
 } from 'react-native'
 import AddExpenseModal from './AddExpenseModal'
 import Balance from '../components/Balance'
+// import SetBudgetModal from '../components/SetBudgetModal'
 import restCalls from '../../utils/restCalls'
 
 
@@ -45,7 +46,7 @@ export default class Home extends Component {
     }
 
     addExpense = (expense) => {
-        restCalls.addExpense(expense).then(this.forceUpdate())
+        restCalls.addExpense(expense).then(this.updateBalance(expense.amount))
     }
 
     addNewCategory = (category) => {
@@ -60,9 +61,19 @@ export default class Home extends Component {
         restCalls.getBalance().then((balance) => this.setState({currentBalance: balance}))
     }
 
+    updateBalance = (amount) => {
+        this.setBalance(this.state.currentBalance - amount)
+    }
+
     setBalance = (amount) => {
         restCalls.setBalance(amount).then(() => this.getCurrentBalance())
     }
+
+    // toggleSetBudgetModal = (isShown) => {
+    //     this.blurBackground(isShown)
+    //     this.setState({isSetBudgetOpen: isShown})
+    // }
+
 
     render() {
         return(
