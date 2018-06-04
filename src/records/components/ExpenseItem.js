@@ -29,7 +29,6 @@ const ExpenseItem = (props) => {
             {/*/>*/}
 
 
-            //TODO: Temp replaced this with the library one, I might change back though
             {/*<Button onPress={() => {props.onPress(expense, Constants.REMOVE_EXPENSE)}}*/}
                     {/*styles={styles.removeButton}>*/}
                 {/*Remove*/}

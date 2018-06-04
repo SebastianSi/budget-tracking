@@ -15,7 +15,6 @@ const CategoryItem = (props) => {
             {/*</Button>*/}
 
 
-            //TODO: Temp replaced this with the library one, I might change back though
             {/*<Button onPress={() => {props.onPress(category, Constants.REMOVE_CATEGORY)}}*/}
                     {/*styles={styles.removeButton}>*/}
                 {/*Remove*/}
