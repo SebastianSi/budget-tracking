@@ -29,7 +29,6 @@ export default class Home extends Component {
     }
 
     componentDidMount() {
-        this.setBalance(7000)
         this.getCurrentBalance()
     }
 
@@ -69,6 +68,10 @@ export default class Home extends Component {
         restCalls.setBalance(amount).then(() => this.getCurrentBalance())
     }
 
+    onSetBalancePressed = (amount) => {
+        this.setBalance(amount)
+    }
+
     // toggleSetBudgetModal = (isShown) => {
     //     this.blurBackground(isShown)
     //     this.setState({isSetBudgetOpen: isShown})
@@ -81,6 +84,7 @@ export default class Home extends Component {
                 <View style={this.state.isBlurred ? styles.container : styles.containerBlurred}>
                     <Balance
                         currentBalance={this.state.currentBalance}
+                        onSetBalance={this.onSetBalancePressed}
                     />
                     <AddExpenseModal
                         blurBackground={this.blurBackground}
