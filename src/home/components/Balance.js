@@ -36,7 +36,7 @@ export default class Balance extends Component {
                     !this.state.isEditPressed ?
 
                     <Text style={{marginBottom: 10, fontWeight: '800', fontSize: 20, alignSelf: 'center', color: Constants.PRIMARY_COLOR_DARK}}>
-                        {this.props.currentBalance}
+                        {this.props.currentBalance + '$'}
                     </Text>
                         :
                     <View style={{maxWidth: 150}}>

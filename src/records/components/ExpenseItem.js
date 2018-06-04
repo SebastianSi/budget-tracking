@@ -1,6 +1,7 @@
 import React from 'react'
 import {Text, TouchableOpacity} from 'react-native'
-import Button from '../../common/Button'
+// import Button from '../../common/Button'
+import { Button } from 'react-native-elements'
 import Constants from '../../AppConstants'
 
 const ExpenseItem = (props) => {
@@ -9,16 +10,41 @@ const ExpenseItem = (props) => {
         <TouchableOpacity style={styles.expense}>
             <Text style={styles.expenseText}>{expense.qty} {expense.item} ({expense.category})
             </Text>
-            <Text style={{right: 128, position: 'absolute', fontWeight: '700'}}>   {expense.amount} {expense.currency}</Text>
+            <Text style={{right: 150, position: 'absolute', fontWeight: '700'}}>   {expense.amount} {expense.currency}</Text>
 
-            <Button onPress={() => {props.onPress(expense, Constants.EDIT_EXPENSE)}}
-                    styles={styles.editButton}>
-                Edit
-            </Button>
-            <Button onPress={() => {props.onPress(expense, Constants.REMOVE_EXPENSE)}}
-                    styles={styles.removeButton}>
-                Remove
-            </Button>
+            {/*<Button onPress={() => {props.onPress(expense, Constants.EDIT_EXPENSE)}}*/}
+                    {/*styles={styles.editButton}>*/}
+                {/*Edit*/}
+            {/*</Button>*/}
+
+            {/*<Button*/}
+                {/*raised*/}
+                {/*containerViewStyle={styles.editButton}*/}
+                {/*backgroundColor={Constants.SECONDARY_COLOR_DARK}*/}
+                {/*borderRadius={5}*/}
+                {/*rightIcon={{name: 'edit'}}*/}
+                {/*title='Edit'*/}
+                {/*onPress={() => {props.onPress(expense, Constants.EDIT_EXPENSE)}}*/}
+
+            {/*/>*/}
+
+
+            //TODO: Temp replaced this with the library one, I might change back though
+            {/*<Button onPress={() => {props.onPress(expense, Constants.REMOVE_EXPENSE)}}*/}
+                    {/*styles={styles.removeButton}>*/}
+                {/*Remove*/}
+            {/*</Button>*/}
+
+            <Button
+                raised
+                containerViewStyle={styles.removeButton}
+                backgroundColor={Constants.PRIMARY_COLOR_DARK}
+                borderRadius={5}
+                rightIcon={{name: 'delete'}}
+                title='Remove'
+                onPress={() => {props.onPress(expense, Constants.REMOVE_EXPENSE)}}
+
+            />
         </TouchableOpacity>
     )
 }

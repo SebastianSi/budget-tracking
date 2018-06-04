@@ -1,6 +1,7 @@
 import React from 'react'
 import {Text, TouchableOpacity} from 'react-native'
-import Button from '../../common/Button'
+// import Button from '../../common/Button'
+import { Button } from 'react-native-elements'
 import Constants from '../../AppConstants'
 
 const CategoryItem = (props) => {
@@ -8,14 +9,28 @@ const CategoryItem = (props) => {
     return (
         <TouchableOpacity style={styles.category}>
             <Text style={styles.categoryText}>{category}</Text>
-            <Button onPress={() => {props.onPress(category, Constants.EDIT_CATEGORY)}}
-                    styles={styles.editButton}>
-                Edit
-            </Button>
-            <Button onPress={() => {props.onPress(category, Constants.REMOVE_CATEGORY)}}
-                    styles={styles.removeButton}>
-                Remove
-            </Button>
+            {/*<Button onPress={() => {props.onPress(category, Constants.EDIT_CATEGORY)}}*/}
+                    {/*styles={styles.editButton}>*/}
+                {/*Edit*/}
+            {/*</Button>*/}
+
+
+            //TODO: Temp replaced this with the library one, I might change back though
+            {/*<Button onPress={() => {props.onPress(category, Constants.REMOVE_CATEGORY)}}*/}
+                    {/*styles={styles.removeButton}>*/}
+                {/*Remove*/}
+            {/*</Button>*/}
+
+            <Button
+                raised
+                containerViewStyle={styles.removeButton}
+                backgroundColor={Constants.PRIMARY_COLOR_DARK}
+                borderRadius={5}
+                rightIcon={{name: 'delete'}}
+                title='Remove'
+                onPress={() => {props.onPress(category, Constants.REMOVE_CATEGORY)}}
+
+            />
         </TouchableOpacity>
     )
 }

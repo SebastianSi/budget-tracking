@@ -115,7 +115,7 @@ export default class AddExpenseModal extends Component {
                 maxWidth: 120,
                 alignSelf: 'flex-end',
                 // paddingLeft: 18,
-                marginTop: 30,
+                marginTop: 20,
                 // paddingRight: 9,
                 marginRight:12,
                 marginBottom: 25,
@@ -154,7 +154,7 @@ export default class AddExpenseModal extends Component {
                                     //clear state - will also reset modalVisible to false
                                     this.setState(this.initialState)
                                 }}>
-                                <Text style={{fontSize: 30, color: Constants.PRIMARY_COLOR_DARK}}>x</Text>
+                                <Text style={{fontSize: 23, color: Constants.PRIMARY_COLOR_DARK}}>x</Text>
                             </TouchableHighlight>
                             <FormInput
                                 distanceToLabel={44}
@@ -163,14 +163,14 @@ export default class AddExpenseModal extends Component {
                                 qtyVal={this.state.qtyVal}
                             />
                             <FormInput
-                                distanceToLabel={40}
+                                distanceToLabel={Platform.OS === 'ios' ? 40 : 36}
                                 labelText={'Item'}
                                 setFormState={(itemText) => this.setState({itemText})}
                                 qtyVal={this.state.itemText}
                             />
                             <FormInput
                                 distanceToLabel={19}
-                                labelText={'Amount'}
+                                labelText={'Cost($)'}
                                 setFormState={(amountText) => this.setState({amountText})}
                                 qtyVal={this.state.amountText}
                             />
@@ -224,7 +224,7 @@ export default class AddExpenseModal extends Component {
                                         let expense = {
                                             category: this.state.categoryText,
                                             amount: this.state.amountText,
-                                            currency: 'RON',
+                                            currency: '$',
                                             item: this.state.itemText,
                                             qty: this.state.qtyVal
                                         }
