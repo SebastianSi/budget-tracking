@@ -68,6 +68,6 @@ export default class CategoriesContainer extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#EEEEEE'
+        backgroundColor: Constants.APP_BACKGROUND
     }})
 

@@ -5,6 +5,7 @@ import {
 } from 'react-native'
 import ExpensesContainer from './ExpensesContainer'
 import restCalls from '../../utils/restCalls'
+import Constants from '../../AppConstants'
 
 export default class RecordsContainer extends Component {
 
@@ -61,6 +62,6 @@ export default class RecordsContainer extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#EEEEEE'
+        backgroundColor: Constants.APP_BACKGROUND
     }})
 
