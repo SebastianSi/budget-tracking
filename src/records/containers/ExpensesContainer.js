@@ -5,6 +5,7 @@ import {
 import { ExpenseItem } from '../components'
 import EditExpenseModal from './EditExpenseModal'
 import Constants from '../../AppConstants'
+import restCalls from '../../utils/restCalls'
 
 export default class ExpensesContainer extends Component {
 
@@ -14,6 +15,11 @@ export default class ExpensesContainer extends Component {
             editModalVisible: false,
             editedExpense: null
         }
+    }
+
+
+    getCategories = (callback) => {
+        restCalls.getCategories().then(callback)
     }
 
     editExpense = (newExpense) => {
@@ -64,6 +70,7 @@ export default class ExpensesContainer extends Component {
                             expense={this.state.editedExpense}
                             editExpense={this.editExpense}
                             closeEditModal = {this.closeEditModal}
+                            getCategories={this.getCategories}
                         >
                         </EditExpenseModal>
                 }
