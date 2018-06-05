@@ -25,6 +25,7 @@ export default class EditExpenseModal extends Component {
 
     componentDidMount() {
         this.getCategories()
+        this.props.blurBackground(true)
     }
 
     getCategories = () => {
@@ -51,7 +52,7 @@ export default class EditExpenseModal extends Component {
         let modalContainerStyle, pickerStyle, submitButtonStyle
         if (Platform.OS === 'ios') {
             modalContainerStyle = {
-                marginTop: 120,
+                marginTop: 60,
                 marginLeft: 8,
                 height: 420,
                 width: 360,
@@ -70,7 +71,7 @@ export default class EditExpenseModal extends Component {
                 alignSelf: 'flex-end',
                 // paddingLeft: 18,
                 marginLeft: 10,
-                marginTop: 42,
+                marginTop: 62,
                 // paddingRight: 9,
                 marginRight:12,
                 marginBottom: 15
@@ -96,7 +97,7 @@ export default class EditExpenseModal extends Component {
                 maxWidth: 120,
                 alignSelf: 'flex-end',
                 // paddingLeft: 18,
-                marginTop: 20,
+                marginTop: 40,
                 // paddingRight: 9,
                 marginRight:12,
                 marginBottom: 25,
@@ -121,8 +122,9 @@ export default class EditExpenseModal extends Component {
                                 this.props.expense &&
                                 <View>
                                     <TouchableHighlight
-                                        style={{alignSelf: 'flex-end', paddingTop: 10, paddingBottom: 10, paddingLeft: 10}}
+                                        style={{alignSelf: 'flex-end', padding: 10}}
                                         onPress={() => {
+                                            this.props.blurBackground(false)
                                             this.props.closeEditModal()
                                         }}>
                                         <Text style={{fontSize: 23, color: Constants.PRIMARY_COLOR_DARK}}>x</Text>

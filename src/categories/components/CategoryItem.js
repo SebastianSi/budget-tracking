@@ -21,8 +21,7 @@ const CategoryItem = (props) => {
             {/*</Button>*/}
 
             <Button
-                raised
-                containerViewStyle={styles.removeButton}
+                containerViewStyle={{}}
                 backgroundColor={Constants.PRIMARY_COLOR_DARK}
                 borderRadius={5}
                 rightIcon={{name: 'delete'}}

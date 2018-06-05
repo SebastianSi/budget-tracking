@@ -36,7 +36,6 @@ const ExpenseItem = (props) => {
             {/*</Button>*/}
 
             <Button
-                raised
                 containerViewStyle={{alignSelf:'flex-end', width: 92}}
                 backgroundColor={Constants.PRIMARY_COLOR_DARK}
                 borderRadius={5}
