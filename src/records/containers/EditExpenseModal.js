@@ -15,7 +15,8 @@ export default class EditExpenseModal extends Component {
             item: this.props.expense.item || '',
             amount: this.props.expense.amount || '',
             category: this.props.expense.category || '',
-            currency: this.props.expense.currency || ''
+            currency: this.props.expense.currency || '',
+            prevAmount: this.props.expense.amount || ''
         }
     }
 

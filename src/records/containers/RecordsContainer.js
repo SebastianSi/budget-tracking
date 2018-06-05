@@ -30,7 +30,14 @@ export default class RecordsContainer extends Component {
 
     onExpenseEdit = (newExpense) => {
         restCalls.editExpense(newExpense)
-            .then(this.updateExpensesState)
+            .then(() => {
+                this.updateExpensesState()
+                console.log('newExpense:', newExpense)
+                restCalls.updateBalance(newExpense.prevAmount - newExpense.amount).then(()=>{
+                    this.props.navigation.state.params.refresh()
+                })
+
+            })
     }
 
     onExpenseRemove = (expenseId) => {

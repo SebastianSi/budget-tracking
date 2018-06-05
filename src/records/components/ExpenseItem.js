@@ -8,7 +8,8 @@ const ExpenseItem = (props) => {
     let { expense } = props
     return (
         <TouchableOpacity style={styles.expense}>
-            <Text style={styles.expenseText}>{expense.qty} {expense.item} ({expense.category})
+            <Text style={styles.expenseText}
+                  onPress={() => {props.onPress(expense, Constants.EDIT_EXPENSE)}} >{expense.qty} {expense.item} ({expense.category})
             </Text>
             <Text style={{right: 150, position: 'absolute', fontWeight: '700'}}>   {expense.amount} {expense.currency}</Text>
 
@@ -36,7 +37,7 @@ const ExpenseItem = (props) => {
 
             <Button
                 raised
-                containerViewStyle={styles.removeButton}
+                containerViewStyle={{alignSelf:'flex-end', width: 92}}
                 backgroundColor={Constants.PRIMARY_COLOR_DARK}
                 borderRadius={5}
                 rightIcon={{name: 'delete'}}
@@ -53,6 +54,7 @@ const styles = {
     expense: {
         flexDirection: 'row',
         justifyContent: 'space-between',
+        flexWrap: 'wrap',
         alignItems: 'center',
         borderBottomWidth: 1,
         borderColor: '#ddd',

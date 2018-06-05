@@ -118,7 +118,16 @@ const restCalls =  {
             await AsyncStorage.setItem('balance', JSON.stringify(amount))
             return true
         } catch(err) {
-            console.log('Error when saving array ', err)
+            console.log('Error when saving balance ', err)
+        }
+    },
+    updateBalance: async function (amount) {
+        let currBalance = await this.getBalance()
+        try {
+            this.setBalance(parseInt(currBalance) + parseInt(amount))
+            return true
+        } catch(err) {
+            console.log('Error when saving balance ', err)
         }
     },
     getBalance: async function () {

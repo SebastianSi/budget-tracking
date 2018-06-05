@@ -34,8 +34,15 @@ export default class Home extends Component {
         this.getCurrentBalance()
     }
 
+
+    componentDidUpdate() {
+        this.getCurrentBalance()
+    }
+
     onSeeRecordsButtonPress = () => {
-        this.props.navigation.navigate('RecordsContainer')
+        this.props.navigation.navigate('RecordsContainer', {refresh: () => {
+            this.forceUpdate()
+        }})
     }
 
     onSeeCategoriesButtonPress = () => {
@@ -59,7 +66,11 @@ export default class Home extends Component {
     }
 
     getCurrentBalance = () => {
-        restCalls.getBalance().then((balance) => this.setState({currentBalance: balance}))
+        restCalls.getBalance().then((balance) => {
+            if (balance !== this.state.currentBalance) {
+                this.setState({currentBalance: balance})
+            }
+        })
     }
 
     updateBalance = (amount) => {
