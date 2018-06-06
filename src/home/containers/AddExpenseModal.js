@@ -67,12 +67,15 @@ export default class AddExpenseModal extends Component {
     }
 
     render() {
-        let modalContainerStyle, pickerStyle, submitButtonStyle
+        let modalContainerStyle, pickerStyle, submitButtonStyle, pickerTextInputStyle
         if (Platform.OS === 'ios') {
             modalContainerStyle = {
-                marginTop: 120,
+                flex: 1,
+                alignItems: 'center',
+                marginTop: 80,
                 marginLeft: 8,
-                height: 420,
+                marginBottom: 5,
+                height: 460,
                 width: 360,
                 backgroundColor: '#fff',
                 borderRadius: 20,
@@ -82,20 +85,36 @@ export default class AddExpenseModal extends Component {
                 top: -52,
                 height: 40,
                 width: 110,
-                paddingBottom: 10
+                paddingBottom: 10,
+                // marginLeft: 25
             }
             submitButtonStyle = {
-                maxWidth: 120,
-                alignSelf: 'flex-end',
+                // maxWidth: 120,
+                width: 330,
+                // alignSelf: 'center',
                 // paddingLeft: 18,
-                marginLeft: 10,
-                marginTop: 42,
+                marginLeft: 12,
+                marginTop: 202,
                 // paddingRight: 9,
-                marginRight:12,
-                marginBottom: 15
+                marginRight:12
+            }
+            pickerTextInputStyle = {
+                height: 30,
+                width: 115,
+                borderColor: 'grey',
+                borderWidth: 0,
+                backgroundColor: Constants.PRIMARY_COLOR,
+                marginTop: 40,
+                marginLeft: 20,
+                color: 'white',
+                fontWeight: '800',
+                borderRadius: 5,
+                paddingLeft: 3
             }
         } else {
             modalContainerStyle = {
+                flex: 1,
+                alignItems: 'center',
                 marginTop: 80,
                 marginLeft: 10,
                 paddingBottom: 10,
@@ -108,18 +127,31 @@ export default class AddExpenseModal extends Component {
             pickerStyle = {
                 marginTop: 38,
                 height: 40,
-                width: 180,
-                paddingBottom: 0
+                width: 120,
+                paddingBottom: 0,
+                // marginLeft: 12
             }
             submitButtonStyle = {
-                maxWidth: 120,
-                alignSelf: 'flex-end',
+                width: 330,
+                // alignSelf: 'flex-end',
                 // paddingLeft: 18,
-                marginTop: 20,
+                marginTop: 90,
                 // paddingRight: 9,
                 marginRight:12,
                 marginBottom: 25,
                 marginLeft: 14
+            }
+            pickerTextInputStyle = {
+                height: 36,
+                width: 118,
+                borderColor: 'grey',
+                borderWidth: 0,
+                backgroundColor: Constants.PRIMARY_COLOR,
+                marginTop: 40,
+                marginLeft: 12,
+                color: 'white',
+                fontWeight: '800',
+                borderRadius: 4
             }
         }
 
@@ -176,7 +208,7 @@ export default class AddExpenseModal extends Component {
                             />
 
                             <View style={{flexDirection:'row', flexWrap:'wrap', paddingBottom: 20, marginTop: 20}}>
-                                <Text style={{alignSelf: 'flex-start', paddingRight:10, paddingLeft: 10, paddingTop: 48}}>Category</Text>
+                                <Text style={{alignSelf: 'flex-start', paddingRight:10, paddingLeft: 20, paddingTop: 48}}>Category</Text>
                                 <Picker
                                     itemStyle={{color: Constants.PRIMARY_COLOR_DARK}}
                                     selectedValue={this.state.addCateg || this.state.categoryText}
@@ -187,9 +219,7 @@ export default class AddExpenseModal extends Component {
                                 {
                                     this.state.addCateg === 'addCategory' &&
                                     <TextInput
-                                        style={{height: 30, width: 90, borderColor: 'grey',
-                                            borderWidth: 0, backgroundColor: Constants.PRIMARY_COLOR, marginTop: 40,
-                                        marginLeft: 20, color: 'white', fontWeight: '800'}}
+                                        style={pickerTextInputStyle}
                                         onChangeText={(categoryText) => this.setState({categoryText})}
                                         value={this.state.categoryText}
                                     />

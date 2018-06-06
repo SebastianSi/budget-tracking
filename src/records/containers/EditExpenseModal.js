@@ -52,9 +52,12 @@ export default class EditExpenseModal extends Component {
         let modalContainerStyle, pickerStyle, submitButtonStyle
         if (Platform.OS === 'ios') {
             modalContainerStyle = {
-                marginTop: 60,
+                flex: 1,
+                alignItems: 'center',
+                marginTop: 80,
                 marginLeft: 8,
-                height: 420,
+                marginBottom: 5,
+                height: 440,
                 width: 360,
                 backgroundColor: '#fff',
                 borderRadius: 20,
@@ -64,24 +67,28 @@ export default class EditExpenseModal extends Component {
                 top: -52,
                 height: 40,
                 width: 110,
-                paddingBottom: 10
+                paddingBottom: 10,
+                // marginLeft: 25
             }
             submitButtonStyle = {
-                maxWidth: 120,
-                alignSelf: 'flex-end',
+                // maxWidth: 120,
+                width: 330,
+                // alignSelf: 'center',
                 // paddingLeft: 18,
-                marginLeft: 10,
-                marginTop: 62,
+                marginLeft: 12,
+                marginTop: 222,
                 // paddingRight: 9,
-                marginRight:12,
-                marginBottom: 15
+                marginRight:12
             }
         } else {
             modalContainerStyle = {
+                flex: 1,
+                alignItems: 'center',
+                justifyContent: 'center',
                 marginTop: 80,
                 marginLeft: 10,
-                paddingBottom: 10,
-                height: 420,
+                marginBottom: 10,
+                height: 400,
                 width: 340,
                 backgroundColor: '#fff',
                 borderRadius: 20,
@@ -90,14 +97,15 @@ export default class EditExpenseModal extends Component {
             pickerStyle = {
                 marginTop: 38,
                 height: 40,
-                width: 180,
-                paddingBottom: 0
+                width: 120,
+                paddingBottom: 0,
+                // marginLeft: 12
             }
             submitButtonStyle = {
-                maxWidth: 120,
-                alignSelf: 'flex-end',
+                width: 330,
+                // alignSelf: 'flex-end',
                 // paddingLeft: 18,
-                marginTop: 40,
+                marginTop: 110,
                 // paddingRight: 9,
                 marginRight:12,
                 marginBottom: 25,
@@ -122,38 +130,38 @@ export default class EditExpenseModal extends Component {
                                 this.props.expense &&
                                 <View>
                                     <TouchableHighlight
-                                        style={{alignSelf: 'flex-end', padding: 10}}
+                                        style={{alignSelf: 'flex-end', padding: 15}}
                                         onPress={() => {
                                             this.props.blurBackground(false)
                                             this.props.closeEditModal()
                                         }}>
                                         <Text style={{fontSize: 23, color: Constants.PRIMARY_COLOR_DARK}}>x</Text>
                                     </TouchableHighlight>
-                                    <View style={{flexDirection:'row', flexWrap:'wrap', paddingBottom: 10}}>
-                                        <Text style={{alignSelf: 'flex-start', paddingRight:44}}>Qty</Text>
+                                    <View style={{flexDirection:'row', paddingBottom: 10, paddingLeft: 25}}>
+                                        <Text style={{paddingRight:44}}>Qty</Text>
                                         <TextInput
-                                            style={{alignSelf: 'center', height: 36, width: 150, borderColor: 'grey', borderWidth: 0,
-                                                backgroundColor: Constants.PRIMARY_COLOR, color: 'white', fontWeight: '800'}}
+                                            style={{height: 36, width: 190, borderColor: 'grey', borderWidth: 0,
+                                                borderRadius: 5, paddingLeft: 14, backgroundColor: Constants.PRIMARY_COLOR, color: 'white', fontWeight: '800'}}
                                             onChangeText={(qty) => this.setState({qty})}
                                             value={this.state.qty}
                                             underlineColorAndroid='transparent'
                                         />
                                     </View>
-                                    <View style={{flexDirection:'row', flexWrap:'wrap', paddingBottom: 10}}>
-                                        <Text style={{alignSelf: 'flex-start', paddingRight:40}}>Item</Text>
+                                    <View style={{flexDirection:'row', paddingBottom: 10, paddingLeft: 15}}>
+                                        <Text style={{alignSelf: 'flex-start', paddingRight:40, marginLeft: 9}}>Item</Text>
                                         <TextInput
-                                            style={{alignSelf: 'center', height: 36, width: 150, borderColor: 'grey', borderWidth: 0,
-                                                backgroundColor: Constants.PRIMARY_COLOR, color: 'white', fontWeight: '800'}}
+                                            style={{height: 36, width: 190, borderColor: 'grey', borderWidth: 0,
+                                                borderRadius: 5, paddingLeft: 3, backgroundColor: Constants.PRIMARY_COLOR, color: 'white', fontWeight: '800'}}
                                             onChangeText={(item) => this.setState({item})}
                                             value={this.state.item}
                                             underlineColorAndroid='transparent'
                                         />
                                     </View>
-                                    <View style={{flexDirection:'row', flexWrap:'wrap', paddingBottom: 10}}>
-                                        <Text style={{alignSelf: 'flex-start', paddingRight:19}}>Amount</Text>
+                                    <View style={{flexDirection:'row', paddingBottom: 10, paddingLeft: 15}}>
+                                        <Text style={{paddingRight:19, marginLeft: 8}}>Amount</Text>
                                         <TextInput
-                                            style={{alignSelf: 'center', height: 36, width: 150, borderColor: 'grey', borderWidth: 0,
-                                                backgroundColor: Constants.PRIMARY_COLOR, color: 'white', fontWeight: '800'}}
+                                            style={{height: 36, width: 190, borderColor: 'grey', borderWidth: 0,
+                                                borderRadius: 5, paddingLeft: 3, backgroundColor: Constants.PRIMARY_COLOR, color: 'white', fontWeight: '800'}}
                                             onChangeText={(amount) => this.setState({amount})}
                                             value={this.state.amount}
                                             underlineColorAndroid='transparent'
@@ -167,8 +175,8 @@ export default class EditExpenseModal extends Component {
                                             {/*value={this.state.category}*/}
                                         {/*/>*/}
                                     {/*</View>*/}
-                                    <View style={{flexDirection:'row', flexWrap:'wrap', paddingBottom: 20, marginTop: 20}}>
-                                        <Text style={{alignSelf: 'flex-start', paddingRight:10, paddingLeft: 10, paddingTop: 48}}>Category</Text>
+                                    <View style={{flexDirection:'row', paddingLeft: 15, paddingBottom: 20, marginTop: 20}}>
+                                        <Text style={{alignSelf: 'flex-start', paddingRight:10, paddingLeft: 9, paddingTop: 48}}>Category</Text>
                                         <Picker
                                             itemStyle={{color: Constants.PRIMARY_COLOR_DARK}}
                                             selectedValue={this.state.category}
@@ -182,6 +190,7 @@ export default class EditExpenseModal extends Component {
                             <Button
                                 onPress={() => {
                                     this.props.editExpense(this.state)
+                                    this.props.blurBackground(false)
                                     this.props.closeEditModal()
                                 }}
                                 raised

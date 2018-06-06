@@ -3,6 +3,7 @@ import {
     Platform,
     StyleSheet,
     View,
+    ImageBackground
 } from 'react-native'
 import { Button } from 'react-native-elements'
 import AddExpenseModal from './AddExpenseModal'
@@ -92,6 +93,7 @@ export default class Home extends Component {
 
 
     render() {
+        // const remote = require('./src/img/cash_coins.jpg')
         let footerButtonsStyleIos = {
             alignSelf: 'flex-end',
             flexDirection: 'row',
@@ -112,6 +114,18 @@ export default class Home extends Component {
         let footerButtonsStyle = Platform.OS === 'ios' ?  footerButtonsStyleIos : footerButtonsStyleAndroid
         return(
             <View style={{ flex: 1 }}>
+                {/*<ImageBackground*/}
+                    {/*source={require('../../../src/img/cash_coins.jpg')}*/}
+                    {/*imageStyle={{resizeMode: 'stretch'}}*/}
+                    {/*// width={200}*/}
+                    {/*// height={280}*/}
+                    {/*style={{*/}
+                        {/*width: 300,*/}
+                        {/*height: 100,*/}
+                        {/*alignItems: 'center',*/}
+                        {/*justifyContent: 'center',*/}
+                        {/*padding: 30,*/}
+                    {/*}}>*/}
                 <View style={this.state.isBlurred ? styles.container : styles.containerBlurred}>
                     <Balance
                         currentBalance={this.state.currentBalance}
@@ -132,7 +146,7 @@ export default class Home extends Component {
                                 backgroundColor={Constants.PRIMARY_COLOR}
                                 borderRadius={5}
                                 icon={{name: 'subject'}}
-                                title='View Records'
+                                title='View Expenses'
                                 onPress={this.onSeeRecordsButtonPress}
                                 containerViewStyle={viewRecordsButtonStyle}
                             />
@@ -150,7 +164,9 @@ export default class Home extends Component {
                         </View>
                     }
                 </View>
+                {/*</ImageBackground>*/}
             </View>
+
         )
     }
 }

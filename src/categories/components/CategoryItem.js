@@ -19,14 +19,13 @@ const CategoryItem = (props) => {
                     {/*styles={styles.removeButton}>*/}
                 {/*Remove*/}
             {/*</Button>*/}
-
             <Button
-                containerViewStyle={{}}
+                containerViewStyle={{width: 40, height: 40}}
                 backgroundColor={Constants.PRIMARY_COLOR_DARK}
                 borderRadius={5}
-                rightIcon={{name: 'delete'}}
-                title='Remove'
-                onPress={() => {props.onPress(category, Constants.REMOVE_CATEGORY)}}
+                icon={{name: 'delete', size: 20, style:{marginRight: 0}}}
+                title=''
+                onPress={() => {props.onPress(expense, Constants.REMOVE_EXPENSE)}}
 
             />
         </TouchableOpacity>

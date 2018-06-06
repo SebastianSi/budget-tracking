@@ -11,7 +11,7 @@ const ExpenseItem = (props) => {
             <Text style={styles.expenseText}
                   onPress={() => {props.onPress(expense, Constants.EDIT_EXPENSE)}} >{expense.qty} {expense.item} ({expense.category})
             </Text>
-            <Text style={{right: 150, position: 'absolute', fontWeight: '700'}}>   {expense.amount} {expense.currency}</Text>
+            <Text style={{right: 150, position: 'absolute', fontWeight: '900', color: Constants.SECONDARY_COLOR_DARK}}>   {expense.amount} {expense.currency}</Text>
 
             {/*<Button onPress={() => {props.onPress(expense, Constants.EDIT_EXPENSE)}}*/}
                     {/*styles={styles.editButton}>*/}
@@ -36,14 +36,15 @@ const ExpenseItem = (props) => {
             {/*</Button>*/}
 
             <Button
-                containerViewStyle={{alignSelf:'flex-end', width: 92}}
+                containerViewStyle={{width: 44, height: 44}}
                 backgroundColor={Constants.PRIMARY_COLOR_DARK}
                 borderRadius={5}
-                rightIcon={{name: 'delete'}}
-                title='Remove'
+                icon={{name: 'delete', size: 22, style:{marginRight: 0}}}
+                title=''
                 onPress={() => {props.onPress(expense, Constants.REMOVE_EXPENSE)}}
 
             />
+
         </TouchableOpacity>
     )
 }
