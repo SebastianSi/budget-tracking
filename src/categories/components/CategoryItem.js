@@ -25,7 +25,7 @@ const CategoryItem = (props) => {
                 borderRadius={3}
                 icon={{name: 'delete', size: 20, style:{marginRight: 0}}}
                 title=''
-                onPress={() => {props.onPress(expense, Constants.REMOVE_EXPENSE)}}
+                onPress={() => {props.onPress(category, Constants.REMOVE_EXPENSE)}}
 
             />
         </TouchableOpacity>
