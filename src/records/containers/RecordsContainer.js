@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import {
     StyleSheet,
-    View
+    View,
+    ImageBackground
 } from 'react-native'
 import ExpensesContainer from './ExpensesContainer'
 import restCalls from '../../utils/restCalls'
@@ -56,11 +57,20 @@ export default class RecordsContainer extends Component {
     render() {
         return(
             <View style={styles.container}>
+                <ImageBackground
+                    source={require('../../img/cash_coins.jpg')}
+                    imageStyle={{resizeMode: 'stretch'}}
+                    width={200}
+                    height={280}
+                    style={{
+                        flex: 1
+                    }}>
                     <ExpensesContainer
                         userExpenses = {this.state.expenses}
                         editExpense = {this.onExpenseEdit}
                         removeExpense = {this.onExpenseRemove}>
                     </ExpensesContainer>
+                </ImageBackground>
             </View>
         )
     }
@@ -68,7 +78,7 @@ export default class RecordsContainer extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        backgroundColor: Constants.APP_BACKGROUND
+        flex: 1
+        // backgroundColor: Constants.APP_BACKGROUND
     }})
 

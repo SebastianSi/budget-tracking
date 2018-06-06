@@ -88,10 +88,10 @@ export default class ExpensesContainer extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        backgroundColor: Constants.PRIMARY_COLOR_DARK
+        flex: 1
+        // backgroundColor: Constants.PRIMARY_COLOR_DARK
     },
     containerBlurred: {
-        flex: 1,
-        backgroundColor: Constants.APP_BACKGROUND
+        flex: 1
+        // backgroundColor: Constants.APP_BACKGROUND
     }})

@@ -114,6 +114,16 @@ export default class Home extends Component {
         let footerButtonsStyle = Platform.OS === 'ios' ?  footerButtonsStyleIos : footerButtonsStyleAndroid
         return(
             <View style={{ flex: 1 }}>
+                <ImageBackground
+                    source={require('../../img/cash_coins.jpg')}
+                    imageStyle={{resizeMode: 'stretch'}}
+                    width={200}
+                    height={280}
+                    style={{
+                        flex: 1,
+                        opacity: 0.8
+                    }}
+                >
 
                 <View style={this.state.isBlurred ? styles.container : styles.containerBlurred}>
                     <Balance
@@ -131,7 +141,6 @@ export default class Home extends Component {
 
                         <View style={footerButtonsStyle}>
                             <Button
-
                                 backgroundColor={Constants.PRIMARY_COLOR}
                                 borderRadius={5}
                                 icon={{name: 'subject'}}
@@ -153,7 +162,7 @@ export default class Home extends Component {
                         </View>
                     }
                 </View>
-                {/*</ImageBackground>*/}
+                </ImageBackground>
             </View>
 
         )
@@ -165,12 +174,26 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: Constants.PRIMARY_COLOR_LIGHT
+        // backgroundColor: '#FFFFFF50',
+        // backgroundColor: Constants.PRIMARY_COLOR_LIGHT,
+        // position: 'absolute',
+        // top: 0,
+        // bottom: 0,
+        // right: 0,
+        // left: 0,
+        // opacity: 0.9
     },
     containerBlurred: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: Constants.APP_BACKGROUND
+        // backgroundColor: '#FFFFFF50'
+        // backgroundColor: Constants.APP_BACKGROUND,
+        // position: 'absolute',
+        // top: 0,
+        // bottom: 0,
+        // right: 0,
+        // left: 0,
+        // opacity: 0.9
     }})
 

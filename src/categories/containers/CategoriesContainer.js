@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import {
     StyleSheet,
     Text,
-    ScrollView
+    ScrollView,
+    ImageBackground
 } from 'react-native'
 import { CategoryItem } from '../components'
 import restCalls from '../../utils/restCalls'
@@ -58,16 +59,25 @@ export default class CategoriesContainer extends Component {
                 onPress={this.handleCategoryPressed}/>
         })
         return(
+            <ImageBackground
+                source={require('../../img/cash_coins.jpg')}
+                imageStyle={{resizeMode: 'stretch'}}
+                width={200}
+                height={280}
+                style={{
+                    flex: 1
+                }}>
                 <ScrollView style={styles.container}>
                     {renderedCategories}
                 </ScrollView>
+            </ImageBackground>
         )
     }
 }
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        backgroundColor: Constants.APP_BACKGROUND
+        flex: 1
+        // backgroundColor: Constants.APP_BACKGROUND
     }})
 
