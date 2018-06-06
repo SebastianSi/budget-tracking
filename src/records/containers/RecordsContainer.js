@@ -64,7 +64,9 @@ export default class RecordsContainer extends Component {
                     height={280}
                     style={{
                         flex: 1
-                    }}>
+                    }}
+                    opacity={0.3}
+                >
                     <ExpensesContainer
                         userExpenses = {this.state.expenses}
                         editExpense = {this.onExpenseEdit}

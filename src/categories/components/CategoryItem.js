@@ -22,7 +22,7 @@ const CategoryItem = (props) => {
             <Button
                 containerViewStyle={{width: 40, height: 40}}
                 backgroundColor={Constants.PRIMARY_COLOR_DARK}
-                borderRadius={5}
+                borderRadius={3}
                 icon={{name: 'delete', size: 20, style:{marginRight: 0}}}
                 title=''
                 onPress={() => {props.onPress(expense, Constants.REMOVE_EXPENSE)}}
@@ -38,13 +38,13 @@ const styles = {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        borderBottomWidth: 1,
-        borderColor: '#ddd',
+        borderBottomWidth: 0.5,
+        borderColor: Constants.PRIMARY_COLOR_LIGHT,
         height: 50
     },
     categoryText: {
-        fontWeight: '700',
-        color: '#673AB7',
+        fontWeight: '800',
+        color: Constants.PRIMARY_COLOR_DARK,
         left: 9
     },
     editButton: {

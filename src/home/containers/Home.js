@@ -120,9 +120,9 @@ export default class Home extends Component {
                     width={200}
                     height={280}
                     style={{
-                        flex: 1,
-                        opacity: 0.8
+                        flex: 1
                     }}
+                    opacity={0.3}
                 >
 
                 <View style={this.state.isBlurred ? styles.container : styles.containerBlurred}>

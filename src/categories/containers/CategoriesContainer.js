@@ -66,7 +66,9 @@ export default class CategoriesContainer extends Component {
                 height={280}
                 style={{
                     flex: 1
-                }}>
+                }}
+                opacity={0.3}
+            >
                 <ScrollView style={styles.container}>
                     {renderedCategories}
                 </ScrollView>
