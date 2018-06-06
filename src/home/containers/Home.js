@@ -114,18 +114,7 @@ export default class Home extends Component {
         let footerButtonsStyle = Platform.OS === 'ios' ?  footerButtonsStyleIos : footerButtonsStyleAndroid
         return(
             <View style={{ flex: 1 }}>
-                {/*<ImageBackground*/}
-                    {/*source={require('../../../src/img/cash_coins.jpg')}*/}
-                    {/*imageStyle={{resizeMode: 'stretch'}}*/}
-                    {/*// width={200}*/}
-                    {/*// height={280}*/}
-                    {/*style={{*/}
-                        {/*width: 300,*/}
-                        {/*height: 100,*/}
-                        {/*alignItems: 'center',*/}
-                        {/*justifyContent: 'center',*/}
-                        {/*padding: 30,*/}
-                    {/*}}>*/}
+
                 <View style={this.state.isBlurred ? styles.container : styles.containerBlurred}>
                     <Balance
                         currentBalance={this.state.currentBalance}
@@ -176,7 +165,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: Constants.PRIMARY_COLOR_DARK
+        backgroundColor: Constants.PRIMARY_COLOR_LIGHT
     },
     containerBlurred: {
         flex: 1,
