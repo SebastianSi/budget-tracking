@@ -59,7 +59,7 @@ export default class EditExpenseModal extends Component {
                 marginBottom: 5,
                 height: 440,
                 width: 360,
-                backgroundColor: '#fff',
+                backgroundColor: Constants.APP_BACKGROUND,
                 borderRadius: 20,
                 elevation: 10
             }
@@ -90,7 +90,7 @@ export default class EditExpenseModal extends Component {
                 marginBottom: 10,
                 height: 400,
                 width: 340,
-                backgroundColor: '#fff',
+                backgroundColor: Constants.APP_BACKGROUND,
                 borderRadius: 20,
                 elevation: 10
             }

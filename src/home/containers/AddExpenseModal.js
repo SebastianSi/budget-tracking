@@ -77,7 +77,7 @@ export default class AddExpenseModal extends Component {
                 marginBottom: 5,
                 height: 460,
                 width: 360,
-                backgroundColor: '#fff',
+                backgroundColor: Constants.APP_BACKGROUND,
                 borderRadius: 20,
                 elevation: 10
             }
@@ -120,7 +120,7 @@ export default class AddExpenseModal extends Component {
                 paddingBottom: 10,
                 height: 420,
                 width: 340,
-                backgroundColor: '#fff',
+                backgroundColor: Constants.APP_BACKGROUND,
                 borderRadius: 20,
                 elevation: 10
             }

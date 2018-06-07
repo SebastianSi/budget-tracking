@@ -12,7 +12,7 @@ const ExpenseItem = (props) => {
                   // onPress={() => {props.onPress(expense, Constants.EDIT_EXPENSE)}}
             >{expense.qty} {expense.item} ({expense.category})
             </Text>
-            <Text style={{right: 122, position: 'absolute', fontWeight: '900'}}>   {expense.amount} {expense.currency}</Text>
+            <Text style={{right: 122, position: 'absolute', fontWeight: '800', fontSize: 17}}>   {expense.amount} {expense.currency}</Text>
 
             {/*<Button onPress={() => {props.onPress(expense, Constants.EDIT_EXPENSE)}}*/}
                     {/*styles={styles.editButton}>*/}
